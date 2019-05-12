@@ -1,0 +1,14 @@
+clc;
+clear;
+rand('seed',0);
+N = [8,2,2];
+M = read_csv('D:\Boring Stuff\Study Material\Sem VI\Artificial Intelligence\Lab\Assignment 5\emg.csv',[],[],"double");
+P = read_csv('D:\Boring Stuff\Study Material\Sem VI\Artificial Intelligence\Lab\Assignment 5\emg.csv',[],[],"double");
+x = M(1:40,2:9)';
+t = M(:,10:11)';
+y = P(41:50,2:9)';
+lp=[0.8, 0];
+T=500;
+W=ann_FF_init(N);
+W=ann_FF_Std_online(x,t,N,W,lp,T);
+a=ann_FF_run(y,N,W);
