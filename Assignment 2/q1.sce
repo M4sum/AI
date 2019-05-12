@@ -1,0 +1,23 @@
+function yprim=f(t,y)
+yprim(1)=y(2);
+yprim(2)=-4*y(1);
+endfunction
+tmax=5;
+t0=0;
+t=t0:0.05:tmax;
+y0=3;
+yprim0=0;
+y1=1;
+yprim1=1;
+y2=4;
+yprim2=1;
+clf;
+y=ode([y0;yprim0],t0,t,f);
+subplot(3,1,1)
+plot(t,y(1,:))
+x=ode([y1;yprim1],t0,t,f);
+subplot(3,1,2)
+plot(t,x(1,:))
+z=ode([y2;yprim2],t0,t,f);
+subplot(3,1,3)
+plot(t,z(1,:))
